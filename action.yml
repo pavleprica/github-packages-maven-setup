@@ -1,0 +1,14 @@
+name: 'maven-settings-setup'
+description: 'GitHub action that sets up the settings.xml Maven file for accessing github packages'
+inputs:
+  username:
+    description: 'Github username of the token provider'
+    required: true
+  token:
+    description: 'Github PAT for accessing the github packages'
+    required: true
+runs:
+  using: "composite"
+  steps: 
+    - run: ${{ github.action_path }}/setup.sh ${{ inputs.username }} ${{ inputs.token }}
+      shell: bash
